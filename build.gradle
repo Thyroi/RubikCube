@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def javafxVersion = '21.0.1'
+
+dependencies {
+    implementation "org.openjfx:javafx-controls:$javafxVersion"
+    implementation "org.openjfx:javafx-fxml:$javafxVersion"
+}
+
+application {
+    mainClass = 'org.example.Main'
+}
+
+run {
+    jvmArgs = [
+            "--module-path", configurations.runtimeClasspath.asPath,
+            "--add-modules", "javafx.controls,javafx.fxml"
+    ]
+}
+
